@@ -49,7 +49,7 @@
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(3, auto); /* adjust if number of tabs changes*/
+    grid-template-columns: repeat(4, auto); /* adjust if number of tabs changes*/
     list-style: none;
     text-align: center;
     width: 40%; /* how far across screen do tabs stretch */
