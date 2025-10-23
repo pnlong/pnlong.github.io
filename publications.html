@@ -21,6 +21,7 @@
                     <li><a href="./projects.html" class="nav-links">Projects</a></li>
                     <li><a href="./publications.html" class="nav-links">Publications</a></li>
                     <li><a href="https://docs.google.com/document/d/1gS7NhiQotaiaGbr1gxGvlr88_bINMUkNbbmJRlOvoOA/edit?usp=sharing" class="nav-links" target="_blank">Resumé</a></li>
+                    <li><a href="https://docs.google.com/document/d/12LU2R7yetTvrrB-xWtI74ikMYM1YEMmnicHpF2zBWv4/edit?usp=sharing" class="nav-links" target="_blank">CV</a></li>
                 </ul>
             </nav>
         </div>
@@ -37,17 +38,30 @@
                 <div id="publications-list">
                     <div class="publication">
                         <h3 class="publication-title">MusPyExpress: Extending MusPy with Enhanced Expression Text Support</h3>
-                        <p class="publication-info">Phillip Long, Hao-Wen Dong, Julian McAuley, Zachary Novack<br><i>NeurIPS 2025 AI4Music Workshop</i><!-- , <a href="https://arxiv.org/abs/2409.10831" class="text-link" target="_blank">https://arxiv.org/abs/2409.10831</a> --></p>
+                        <p class="publication-info"><b>Phillip Long</b>, Hao-Wen Dong, Julian McAuley, Zachary Novack<br><i>NeurIPS 2025 Workshop on AI for Music</i><!-- , <a href="https://arxiv.org/abs/2409.10831" class="text-link" target="_blank">https://arxiv.org/abs/2409.10831</a> --></p>
                         <p class="publication-info publication-summary">Created an extension to the popular symbolic music processing library <a href="https://hermandong.com/muspy/doc/muspy.html" class="text-link" target="_blank">MusPy</a>, which we term <b>MuspyExpress</b>, to better extract <i>expression text</i>, symbolic annotations common in western sheet music. While often omitted by the dominant MIDI standard, expression text is abundant in MusicXML (and MusicXML-adjacent) formats yet often goes unharnessed because current symbolic music processing libraries struggle, or even fail, to parse it. By integrating expression text into the MusPy ecosystem, MusPyExpress enables the extraction of expression text along with symbolic music for downstream modeling.</p>
                         <ul class="publication-info publication-summary publication-links" role="list">
                             <!-- <li class="publication-link"><a href="https://arxiv.org/abs/2409.10831/" class="text-link" target="_blank">Paper</a></li> -->
                             <li class="publication-link"><a href="https://github.com/salu133445/muspy/tree/expressive" class="text-link" target="_blank">Code</a></li>
                             <li class="publication-link"><a href="https://github.com/pnlong/muspy_express_support" class="text-link" target="_blank">Support Code</a></li>
+                            <li class="publication-link"><a href="https://pnlong.github.io/muspy_express_support/" class="text-link" target="_blank">Demo</a></li>
+                            <li class="publication-link"><a href="https://pnlong.github.io/MusPyExpress.docs/" class="text-link" target="_blank">Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="publication">
+                        <h3 class="publication-title">MuseTok: Symbolic Music Tokenization for Generation and Semantic Understanding</h3>
+                        <p class="publication-info">Jingyue Huang, Zachary Novack, <b>Phillip Long</b>, Yupeng Hou, Ke Chen, Taylor Berg-Kirkpatrick, Julian McAuley<br><i>ArXiv Preprint</i> , <a href="https://arxiv.org/abs/2510.16273/" class="text-link" target="_blank">https://arxiv.org/abs/2510.16273</a></p>
+                        <p class="publication-info publication-summary">Proposed a new tokenization method for symbolic music, which employs a residual vector quantized-variational autoencoder (RQ-VAE) on bar-wise music segments within a Transformer-based encoder-decoder framework, producing music codes that achieve high-fidelity music reconstruction and accurate understanding of music theory. Evaluated the semantic understanding of the framework at the note, bar and song levels by training classifiers on MuseTok's encoded-latents for three music information retrieval tasks: melody extraction, chord detection, and emotion recognition.</p>
+                        <ul class="publication-info publication-summary publication-links" role="list">
+                            <li class="publication-link"><a href="https://arxiv.org/abs/2510.16273/" class="text-link" target="_blank">Paper</a></li>
+                            <li class="publication-link"><a href="https://github.com/Yuer867/MuseTok" class="text-link" target="_blank">Code</a></li>
+                            <li class="publication-link"><a href="https://github.com/pnlong/jingyue_latents" class="text-link" target="_blank">Support Code</a></li>
+                            <li class="publication-link"><a href="https://musetok.github.io/" class="text-link" target="_blank">Demo</a></li>
                         </ul>
                     </div>
                     <div class="publication">
                         <h3 class="publication-title">PDMX: A Large Scale Public Domain MusicXML Dataset for Symbolic Music Processing</h3>
-                        <p class="publication-info">Phillip Long, Zachary Novack, Taylor Berg-Kirkpatrick, Julian McAuley<br><i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2025</i>, <a href="https://arxiv.org/abs/2409.10831" class="text-link" target="_blank">https://arxiv.org/abs/2409.10831</a></p>
+                        <p class="publication-info"><b>Phillip Long</b>, Zachary Novack, Taylor Berg-Kirkpatrick, Julian McAuley<br><i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2025</i>, <a href="https://arxiv.org/abs/2409.10831" class="text-link" target="_blank">https://arxiv.org/abs/2409.10831</a></p>
                         <p class="publication-info publication-summary">Assembled the largest known copyright-free MusicXML dataset, <b>PDMX</b>, consisting of over 250,00 sheet music pieces for modeling symbolic music. Demonstrated the utility of PDMX's deduplication and rating data as a means for data distillation by training decoder-only transformers to generate symbolic music from four different-filtered subsets of PDMX. PDMX also features an abundance of fine-grained performance directives, which could be harnessed in future work as expression-text controls or natural language captions.</p>
                         <ul class="publication-info publication-summary publication-links" role="list">
                             <li class="publication-link"><a href="https://arxiv.org/abs/2409.10831/" class="text-link" target="_blank">Paper</a></li>
@@ -58,7 +72,7 @@
                     </div>
                     <div class="publication">
                         <h3 class="publication-title">The utility of a closed breeding colony of <i>Peromyscus leucopus</i> for dissecting complex traits</h3>
-                        <p class="publication-info">Phillip Long, Vanessa J Cook, Arundhati Majumder, Alan G Barbour, Anthony D Long<br><i>Genetics</i>, Volume 221, Issue 1, May 2022, iyac026, <a href="https://doi.org/10.1093/genetics/iyac026" class="text-link" target="_blank">https://doi.org/10.1093/genetics/iyac026</a></p>
+                        <p class="publication-info"><b>Phillip Long</b>, Vanessa J Cook, Arundhati Majumder, Alan G Barbour, Anthony D Long<br><i>Genetics</i>, Volume 221, Issue 1, May 2022, iyac026, <a href="https://doi.org/10.1093/genetics/iyac026" class="text-link" target="_blank">https://doi.org/10.1093/genetics/iyac026</a></p>
                         <p class="publication-info publication-summary">Used R, Python, and Bash scripts on UC Irvine's <a href="https://rcic.uci.edu/hpc3/" class="text-link" target="_blank">HPC3 Cluster</a> to analyze terabytes of genetic data collected in <i>Peromyscus leucopus</i>, the primary reservoir for Lyme disease. Tested a new computational framework for imputing genetic data in closed-breeding colonies. Created figures and tables summarizing datasets for the paper.</p>
                         <ul class="publication-info publication-summary publication-links" role="list">
                             <li class="publication-link"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9071557/" class="text-link" target="_blank">Paper</a></li>
