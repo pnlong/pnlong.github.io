@@ -9,11 +9,9 @@
         // For root level: /index.html or / -> depth 0
         // For blog posts: /blog_posts/post-title/index.html -> depth 2
         const path = window.location.pathname;
-        console.log('Current pathname:', path);
         
         // Remove leading/trailing slashes and filter out empty segments and index.html
         const pathSegments = path.split('/').filter(segment => segment && segment !== 'index.html');
-        console.log('Path segments:', pathSegments);
         
         // Count directories (exclude the HTML file itself)
         // On GitHub Pages, the repo name is part of the path but we treat root pages as depth 0
@@ -32,10 +30,6 @@
                 //   depth = 1 + 1 = 2
                 const segmentsAfterBlogPosts = pathSegments.length - blogPostsIndex - 1;
                 depth = segmentsAfterBlogPosts + 1; // +1 for blog_posts directory
-                console.log('Found blog_posts at index:', blogPostsIndex);
-                console.log('Total segments:', pathSegments.length);
-                console.log('Segments after blog_posts:', segmentsAfterBlogPosts);
-                console.log('Calculated depth:', depth);
             } else {
                 // Root level page (index.html, blog.html, etc.)
                 // On GitHub Pages, might have repo name as first segment
@@ -81,11 +75,6 @@
         }
         
         // Load and inject navbar
-        console.log('Final depth:', depth);
-        console.log('Loading navbar from:', navbarPath);
-        console.log('Base path for links:', basePath);
-        console.log('Is GitHub Pages:', isGitHubPages);
-        
         fetch(navbarPath)
             .then(response => {
                 if (!response.ok) {
@@ -101,9 +90,8 @@
                 // Insert navbar at the beginning of body
                 if (document.body) {
                     document.body.insertAdjacentHTML('afterbegin', html);
-                    console.log('Navbar loaded successfully');
                 } else {
-                    console.error('document.body is not available');
+                    console.error('Error: document.body is not available');
                 }
                 
                 // After navbar is loaded, initialize the mobile menu functionality
