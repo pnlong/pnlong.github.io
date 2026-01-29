@@ -21,7 +21,7 @@
 
 .navbar {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto 1fr;
     align-items: center;
     height: 80px;
     width: 100%;
@@ -48,6 +48,11 @@
     transition: all 0.2s ease;
 }
 
+.menu-toggle {
+    display: none; /* Hidden on desktop, shown on mobile */
+    cursor: pointer;
+}
+
 .nav-menu {
     display: flex;
     flex-wrap: nowrap;
@@ -56,19 +61,24 @@
     justify-content: flex-start;
     align-items: center;
     gap: 0;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    justify-self: start;
 }
 
 /* tab values */
 .nav-menu li {
     flex-shrink: 0;
+    list-style: none;
 }
 
 .nav-links {
     color: var(--white);
     text-decoration: none;
     font-weight: normal;
-    padding: 0 15px;
-    font-size: 20px; /* size of the tabs - slightly smaller to prevent wrapping */
+    padding: 0 12px;
+    font-size: 19px; /* size of the tabs - slightly smaller to prevent wrapping */
     white-space: nowrap; /* prevent text wrapping */
     display: block;
 }
@@ -89,6 +99,12 @@
 @media screen and (max-width: 768px) {
     .nav-container {
         position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        justify-self: end;
     }
 
     .nav-menu {
