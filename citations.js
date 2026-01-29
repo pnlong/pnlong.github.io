@@ -228,22 +228,31 @@
     }
 
     // Generate bibliography
+    // Only includes entries that are actually cited in the document (via .citation[data-cite] elements)
+    // This ensures references.bib can contain many entries, but only cited ones appear in the bibliography
     function generateBibliography(bibEntries) {
         const bibContainer = document.getElementById('bibliography-list');
         if (!bibContainer) return;
 
-        // Get all cited keys from the document
+        // Get all cited keys from the document - only these will appear in the bibliography
         const citedKeys = new Set();
         document.querySelectorAll('.citation[data-cite]').forEach(citation => {
-            citedKeys.add(citation.getAttribute('data-cite'));
+            const citeKey = citation.getAttribute('data-cite');
+            if (citeKey) {
+                citedKeys.add(citeKey);
+            }
         });
 
-        // Sort entries by key (alphabetically)
+        // Sort entries by key (alphabetically) - only cited entries are included
         const sortedKeys = Array.from(citedKeys).sort();
 
+        // Only generate bibliography entries for citations that actually appear in the document
         sortedKeys.forEach(key => {
             const entry = bibEntries[key];
-            if (!entry) return;
+            if (!entry) {
+                // Citation key not found in references.bib - skip it
+                return;
+            }
             
             const formatted = formatBibliographyEntry(entry, key);
             
