@@ -4,30 +4,39 @@
 
 (function() {
     // Determine the path depth (how many directories deep we are)
-    // For root level: index.html -> depth 0
-    // For blog posts: blog_posts/post-title/index.html -> depth 2
+    // For root level: /index.html or / -> depth 0
+    // For blog posts: /blog_posts/post-title/index.html -> depth 2
     const path = window.location.pathname;
+    // Remove leading/trailing slashes and filter out empty segments and index.html
     const pathSegments = path.split('/').filter(segment => segment && segment !== 'index.html');
     
-    // Count directories (exclude the HTML file itself and repository name on GitHub Pages)
-    // On GitHub Pages: /repository-name/ -> depth 0, /repository-name/blog_posts/post/index.html -> depth 2
+    // Count directories (exclude the HTML file itself)
+    // On GitHub Pages, the repo name is part of the path but we treat root pages as depth 0
     let depth = 0;
-    if (pathSegments.length > 1) {
-        // Check if first segment is likely a repository name (common GitHub Pages pattern)
-        // If pathSegments[0] is not a known file/directory, it might be the repo name
-        const firstSegment = pathSegments[0];
-        const knownFiles = ['index.html', 'blog.html', 'projects.html', 'publications.html'];
-        const knownDirs = ['blog_posts', 'assets'];
-        
-        // If first segment is not a known file/dir, it's probably the repo name (skip it)
-        if (!knownFiles.includes(firstSegment) && !knownDirs.includes(firstSegment)) {
-            depth = pathSegments.length - 2; // Subtract repo name and filename
+    // Check if we're in a subdirectory (blog_posts, etc.)
+    if (pathSegments.length > 0) {
+        // If path contains 'blog_posts', calculate depth from there
+        const blogPostsIndex = pathSegments.indexOf('blog_posts');
+        if (blogPostsIndex >= 0) {
+            // Depth is number of segments after 'blog_posts' (including blog_posts itself)
+            // blog_posts/post-title -> depth 2
+            depth = pathSegments.length - blogPostsIndex;
         } else {
-            depth = pathSegments.length - 1; // Just subtract filename
+            // Root level page (index.html, blog.html, etc.)
+            // On GitHub Pages, might have repo name as first segment
+            const knownFiles = ['blog.html', 'projects.html', 'publications.html'];
+            const knownDirs = ['assets'];
+            const firstSegment = pathSegments[0];
+            
+            // If first segment is not a known file/dir, it might be repo name (GitHub Pages)
+            if (pathSegments.length > 0 && !knownFiles.includes(firstSegment) && !knownDirs.includes(firstSegment) && firstSegment !== '') {
+                // Likely GitHub Pages with repo name - root page is depth 0
+                depth = 0;
+            } else {
+                // Local or root level - depth 0
+                depth = 0;
+            }
         }
-        
-        // Ensure depth is never negative
-        if (depth < 0) depth = 0;
     }
     
     // Calculate the relative path to navbar.html

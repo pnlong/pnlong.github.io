@@ -3,7 +3,35 @@
 // Usage: Include this script and a references.bib file in your blog post directory
 
 (function() {
-    // Simple BibTeX parser
+    // Helper function to extract balanced braces content
+    function extractBracedContent(text, startPos) {
+        if (text[startPos] !== '{') return null;
+        let depth = 0;
+        let pos = startPos;
+        let start = pos;
+        
+        while (pos < text.length) {
+            if (text[pos] === '{') {
+                depth++;
+            } else if (text[pos] === '}') {
+                depth--;
+                if (depth === 0) {
+                    // Return content without outer braces
+                    return {
+                        content: text.substring(start + 1, pos),
+                        endPos: pos + 1
+                    };
+                }
+            } else if (text[pos] === '\\' && pos + 1 < text.length) {
+                // Skip escaped characters
+                pos++;
+            }
+            pos++;
+        }
+        return null;
+    }
+
+    // Simple BibTeX parser with nested brace support
     function parseBibTeX(bibtex) {
         const entries = {};
         // Match @type{key, ...fields...}
@@ -16,19 +44,52 @@
             const content = match[3];
             
             const fields = {};
-            // Match field = {value} or field = value
-            const fieldRegex = /(\w+)\s*=\s*\{([^}]*)\}/g;
+            // Match field = {value} with proper nested brace handling
+            const fieldRegex = /(\w+)\s*=\s*/g;
             let fieldMatch;
+            let lastIndex = 0;
             
             while ((fieldMatch = fieldRegex.exec(content)) !== null) {
-                let value = fieldMatch[2];
-                // Handle LaTeX special characters
-                value = value.replace(/\\'([a-z])/g, "$1");
-                value = value.replace(/\\`([a-z])/g, "$1");
-                value = value.replace(/\\"/g, '"');
-                value = value.replace(/\\&/g, '&');
-                value = value.replace(/\\%/g, '%');
-                fields[fieldMatch[1]] = value;
+                const fieldName = fieldMatch[1];
+                const valueStart = fieldMatch.index + fieldMatch[0].length;
+                
+                // Skip whitespace
+                let pos = valueStart;
+                while (pos < content.length && /\s/.test(content[pos])) {
+                    pos++;
+                }
+                
+                // Check if value starts with brace
+                if (content[pos] === '{') {
+                    const braced = extractBracedContent(content, pos);
+                    if (braced) {
+                        let value = braced.content;
+                        // Remove outer braces from nested braces (e.g., {{MusicLM}} -> MusicLM)
+                        value = value.replace(/\{\{([^}]+)\}\}/g, '$1');
+                        // Handle LaTeX special characters
+                        value = value.replace(/\\'([a-z])/g, "$1");
+                        value = value.replace(/\\`([a-z])/g, "$1");
+                        value = value.replace(/\\"/g, '"');
+                        value = value.replace(/\\&/g, '&');
+                        value = value.replace(/\\%/g, '%');
+                        value = value.replace(/\\{/g, '{');
+                        value = value.replace(/\\}/g, '}');
+                        fields[fieldName] = value;
+                        lastIndex = braced.endPos;
+                    }
+                } else {
+                    // Simple value without braces (until comma or newline)
+                    const simpleValueEnd = content.indexOf(',', valueStart);
+                    const newlineValueEnd = content.indexOf('\n', valueStart);
+                    let endPos = content.length;
+                    if (simpleValueEnd !== -1 && (newlineValueEnd === -1 || simpleValueEnd < newlineValueEnd)) {
+                        endPos = simpleValueEnd;
+                    } else if (newlineValueEnd !== -1) {
+                        endPos = newlineValueEnd;
+                    }
+                    fields[fieldName] = content.substring(valueStart, endPos).trim();
+                    lastIndex = endPos;
+                }
             }
             
             entries[key] = {

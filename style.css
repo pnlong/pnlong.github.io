@@ -114,16 +114,23 @@
         width: 100%;
         position: absolute;
         top: 80px; /* change if I change the height of the navbar */
-        left: -100%;
+        left: 0;
         opacity: 0;
-        transition: all 0.5s ease;
+        transform: translateY(-100%);
+        visibility: hidden;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.4s;
     }
     .nav-menu.active {
         background: var(--darkgrey);
-        left: 0;
         opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
         z-index: 3;
-        transition: all 0.5s ease;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.4s;
     }
 
     .nav-links {
