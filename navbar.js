@@ -23,10 +23,19 @@
             // If path contains 'blog_posts', calculate depth from there
             const blogPostsIndex = pathSegments.indexOf('blog_posts');
             if (blogPostsIndex >= 0) {
-                // Depth is number of segments after 'blog_posts' (including blog_posts itself)
-                // blog_posts/post-title -> depth 2
-                depth = pathSegments.length - blogPostsIndex;
-                console.log('Found blog_posts at index:', blogPostsIndex, 'Calculated depth:', depth);
+                // For /portfolio/blog_posts/post-title/index.html:
+                //   pathSegments = ['portfolio', 'blog_posts', 'post-title']
+                //   blogPostsIndex = 1
+                //   We need to go up from post-title/ to portfolio/ (2 levels: ../..)
+                //   So depth = number of segments after 'blog_posts' + 1 (for blog_posts itself)
+                //   segmentsAfterBlogPosts = pathSegments.length - blogPostsIndex - 1 = 3 - 1 - 1 = 1
+                //   depth = 1 + 1 = 2
+                const segmentsAfterBlogPosts = pathSegments.length - blogPostsIndex - 1;
+                depth = segmentsAfterBlogPosts + 1; // +1 for blog_posts directory
+                console.log('Found blog_posts at index:', blogPostsIndex);
+                console.log('Total segments:', pathSegments.length);
+                console.log('Segments after blog_posts:', segmentsAfterBlogPosts);
+                console.log('Calculated depth:', depth);
             } else {
                 // Root level page (index.html, blog.html, etc.)
                 // On GitHub Pages, might have repo name as first segment
@@ -72,8 +81,10 @@
         }
         
         // Load and inject navbar
+        console.log('Final depth:', depth);
         console.log('Loading navbar from:', navbarPath);
         console.log('Base path for links:', basePath);
+        console.log('Is GitHub Pages:', isGitHubPages);
         
         fetch(navbarPath)
             .then(response => {
