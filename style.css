@@ -49,7 +49,7 @@
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto); /* adjust if number of tabs changes*/
+    grid-template-columns: repeat(5, auto); /* adjust if number of tabs changes*/
     list-style: none;
     text-align: center;
     width: 40%; /* how far across screen do tabs stretch */
@@ -630,5 +630,279 @@ p {
     margin-top: 10px;
     font-size: 17px;
     font-weight: normal;
+}
+/**************************************************************************/
+
+/* BLOG */
+/**************************************************************************/
+#blog-list {
+    margin-top: 45px;
+}
+
+.blog-post {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+
+.blog-post:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.blog-post-title {
+    margin-bottom: 10px;
+    font-size: 23px;
+    color: black;
+}
+
+.blog-post-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-post-title a:hover {
+    color: var(--brightred);
+    transition: color 0.2s ease;
+}
+
+.blog-post-date {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+}
+
+.blog-post-description {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: black;
+}
+
+/* Blog post content styling */
+.blog-post-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.blog-post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    display: block;
+}
+
+.blog-post-content figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.blog-post-content figure img {
+    margin: 0 auto;
+}
+
+.blog-post-content .figtitle {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.blog-post-content figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+}
+
+.blog-post-content code {
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+}
+
+.blog-post-content pre {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.blog-post-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.blog-post-back-link {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.blog-post-back-link a {
+    color: var(--brightred);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.blog-post-back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Blog post sections */
+.blog-section {
+    color: var(--brightred);
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.blog-subsection {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.blog-subsubsection {
+    color: #555;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Blog post tables */
+.blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.blog-table th,
+.blog-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.blog-table th {
+    background-color: var(--darkgrey);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.blog-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.blog-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Blog post bibliography */
+.blog-bibliography {
+    margin-top: 20px;
+}
+
+.blog-bibliography p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    text-indent: -20px;
+    line-height: 1.6;
+}
+
+.blog-bibliography a {
+    color: var(--brightred);
+    text-decoration: none;
+}
+
+.blog-bibliography a:hover {
+    text-decoration: underline;
+}
+
+.citation-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted #666;
+}
+
+.citation-link:hover {
+    color: var(--brightred);
+    border-bottom-color: var(--brightred);
+}
+
+/* Math equation styling */
+.MathJax {
+    font-size: 1.1em;
+}
+
+/* Blog post author information */
+.blog-authors {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.blog-author {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.blog-author-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.blog-author-name a {
+    color: #333;
+    text-decoration: none;
+}
+
+.blog-author-name a:hover {
+    color: var(--brightred);
+    text-decoration: underline;
+}
+
+.blog-author-affiliation {
+    color: #666;
+    font-style: italic;
+}
+
+/* Blog post abstract */
+.blog-abstract {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--brightred);
+    border-radius: 4px;
+}
+
+.blog-abstract-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.blog-abstract-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+    text-align: justify;
 }
 /**************************************************************************/

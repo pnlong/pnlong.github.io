@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico"> <!-- favicon -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rock 3D"> <!-- for my name home button -->
+        <link rel="stylesheet" href="../../style.css"> <!-- CSS -->
+        <!-- MathJax for LaTeX math equations -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                }
+            };
+        </script>
+        <title>Blog Post Title - Phillip Long</title>
+    </head>
+    <body>
+        <!-- NAVBAR and BANNER loaded via navbar.js -->
+        <div id="main">
+            <div id="main-container"> <!-- main container -->
+                <div class="blog-post-content">
+                    <h2 class="section-header">Blog Post Title</h2>
+                    <p class="blog-post-date">January 15, 2024</p>
+                    
+                    <!-- Author information -->
+                    <!--
+                    <div class="blog-authors">
+                        <p class="blog-author">
+                            <a href="https://your-website.com" class="blog-author-name" target="_blank">Author Name</a><span class="blog-author-affiliation">, Affiliation</span>
+                        </p>
+                        <p class="blog-author">
+                            <span class="blog-author-name">Co-Author Name</span><span class="blog-author-affiliation">, Another Affiliation</span>
+                        </p>
+                    </div>
+                    -->
+                    
+                    <!-- Abstract -->
+                    <!--
+                    <div class="blog-abstract">
+                        <h3 class="blog-abstract-title">Abstract</h3>
+                        <p class="blog-abstract-text">
+                            Your abstract text goes here. This should provide a concise summary of the main points, findings, and conclusions of your blog post.
+                        </p>
+                    </div>
+                    -->
+                    
+                    <!-- Blog post content goes here -->
+                    <p>This is where you'll add your blog post content. You can include paragraphs, images, code blocks, and more.</p>
+                    
+                    <!-- Sections -->
+                    <h3 class="blog-section">Section Title</h3>
+                    <p>Content for the section goes here.</p>
+                    
+                    <!-- Subsections -->
+                    <h4 class="blog-subsection">Subsection Title</h4>
+                    <p>Content for the subsection goes here.</p>
+                    
+                    <!-- Subsubsections -->
+                    <h5 class="blog-subsubsection">Subsubsection Title</h5>
+                    <p>Content for the subsubsection goes here.</p>
+                    
+                    <!-- Example figure -->
+                    <!--
+                    <figure>
+                        <img src="./figs/figure1.png" alt="Figure description">
+                        <div class="figtitle">Figure 1: Figure Title</div>
+                        <figcaption>Figure caption/description goes here</figcaption>
+                    </figure>
+                    -->
+                    
+                    <!-- Example table -->
+                    <!--
+                    <table class="blog-table">
+                        <thead>
+                            <tr>
+                                <th>Column 1</th>
+                                <th>Column 2</th>
+                                <th>Column 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Row 1, Col 1</td>
+                                <td>Row 1, Col 2</td>
+                                <td>Row 1, Col 3</td>
+                            </tr>
+                            <tr>
+                                <td>Row 2, Col 1</td>
+                                <td>Row 2, Col 2</td>
+                                <td>Row 2, Col 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    -->
+                    
+                    <!-- Example math equation (inline) -->
+                    <!--
+                    <p>Here is an inline equation: $E = mc^2$</p>
+                    -->
+                    
+                    <!-- Example math equation (display) -->
+                    <!--
+                    <p>Here is a display equation:</p>
+                    $$f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2\pi i \xi x} d\xi$$
+                    -->
+                    
+                    <!-- Example code block -->
+                    <!--
+                    <pre><code>// Example code block
+function example() {
+    return "Hello, World!";
+}</code></pre>
+                    -->
+                    
+                    <!-- Bibliography section -->
+                    <!--
+                    <h3 class="blog-section">References</h3>
+                    <div class="blog-bibliography" id="bibliography-list">
+                        <!-- Bibliography will be generated automatically by citations.js from references.bib -->
+                    </div>
+                    -->
+                    <!-- 
+                    To cite in text, use: 
+                    <span class="citation" data-cite="bibtexkey"></span>
+                    
+                    Example:
+                    <span class="citation" data-cite="agostinelli2023musiclm"></span>
+                    
+                    Citations will be automatically formatted as "Author Year" (e.g., "Long 2024" or "Long et al. 2024")
+                    based on the BibTeX entry. No need to include author name or year in the HTML.
+                    
+                    The bibliography will be automatically generated from references.bib and sorted alphabetically.
+                    Only cited references will appear in the bibliography.
+                    -->
+                    
+                    <!-- Back to blog link -->
+                    <div class="blog-post-back-link">
+                        <a href="../../blog.html">← Back to Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../navbar.js"></script>
+        <script src="../../app.js"></script>
+        <script src="../../citations.js"></script>
+    </body>
+</html>
