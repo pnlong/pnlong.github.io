@@ -31,6 +31,13 @@
         return null;
     }
 
+    // Helper function to remove all curly brackets from a string while preserving content
+    function removeAllBraces(text) {
+        if (!text) return text;
+        // Remove all { and } characters
+        return text.replace(/\{|\}/g, '');
+    }
+
     // Simple BibTeX parser with nested brace support
     function parseBibTeX(bibtex) {
         const entries = {};
@@ -64,9 +71,7 @@
                     const braced = extractBracedContent(content, pos);
                     if (braced) {
                         let value = braced.content;
-                        // Remove outer braces from nested braces (e.g., {{MusicLM}} -> MusicLM)
-                        value = value.replace(/\{\{([^}]+)\}\}/g, '$1');
-                        // Handle LaTeX special characters
+                        // Handle LaTeX special characters first (before removing braces)
                         value = value.replace(/\\'([a-z])/g, "$1");
                         value = value.replace(/\\`([a-z])/g, "$1");
                         value = value.replace(/\\"/g, '"');
@@ -74,6 +79,13 @@
                         value = value.replace(/\\%/g, '%');
                         value = value.replace(/\\{/g, '{');
                         value = value.replace(/\\}/g, '}');
+                        
+                        // Remove all internal curly brackets for specific fields
+                        const fieldsToClean = ['author', 'title', 'journal', 'booktitle'];
+                        if (fieldsToClean.includes(fieldName.toLowerCase())) {
+                            value = removeAllBraces(value);
+                        }
+                        
                         fields[fieldName] = value;
                         lastIndex = braced.endPos;
                     }
