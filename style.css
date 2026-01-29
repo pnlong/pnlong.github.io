@@ -21,12 +21,13 @@
 
 .navbar {
     display: grid;
-    grid-template-columns: 0.2fr auto 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     height: 80px;
     width: 100%;
     max-width: 1720px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* home button "PHILLIP" */
@@ -48,22 +49,28 @@
 }
 
 .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(5, auto); /* adjust if number of tabs changes*/
+    display: flex;
+    flex-wrap: nowrap;
     list-style: none;
     text-align: center;
-    width: 40%; /* how far across screen do tabs stretch */
-    justify-self: start;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
 }
 
 /* tab values */
+.nav-menu li {
+    flex-shrink: 0;
+}
+
 .nav-links {
     color: var(--white);
     text-decoration: none;
     font-weight: normal;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 22px; /* size of the tabs */
+    padding: 0 15px;
+    font-size: 20px; /* size of the tabs - slightly smaller to prevent wrapping */
+    white-space: nowrap; /* prevent text wrapping */
+    display: block;
 }
 .nav-links:hover {
     color: var(--brightred);
@@ -85,8 +92,8 @@
     }
 
     .nav-menu {
-        display: grid;
-        grid-template-columns: auto;
+        display: flex;
+        flex-direction: column;
         margin: 0;
         width: 100%;
         position: absolute;
