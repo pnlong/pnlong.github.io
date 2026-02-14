@@ -732,6 +732,17 @@ p {
 
 .blog-post-content figure img {
     margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Smaller figure option */
+.blog-post-content figure.figure-small img {
+    max-width: 60%;
+}
+
+.blog-post-content figure.figure-medium img {
+    max-width: 80%;
 }
 
 .blog-post-content .figtitle {
