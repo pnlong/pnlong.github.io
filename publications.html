@@ -19,6 +19,16 @@
                 <hr>
                 <div id="publications-list">
                     <div class="publication">
+                        <h3 class="publication-title">Benchmarking Language Modeling for Lossless Compression of Full-Fidelity Audio</h3>
+                        <p class="publication-info"><b>Phillip Long</b>, Zachary Novack, Chris Donahue<br>In submission at <i>Interspeech 2026</i>, <a href="https://arxiv.org/abs/2603.08683/" class="text-link" target="_blank">https://arxiv.org/abs/2603.08683</a></p>
+                        <p class="publication-info publication-summary">Introduced Trilobyte, a hierarchical byte-level tokenization scheme enabling the first tractable language model compression of 24-bit audio. Benchmarked language model-based lossless compression across diverse domains and bit depths. Illustrated that learned approaches consistently outperform FLAC at 8-bit, but gains diminish substantially at higher bit depths, suggesting FLAC may operate near fundamental entropy bounds. Conducted extensive ablations characterizing traditional and neural codec baselines, including FLAC, pretrained LLMs, and neural audio codecs as drop-in linear predictive coding replacements.</p>
+                        <ul class="publication-info publication-summary publication-links" role="list">
+                            <li class="publication-link"><a href="https://arxiv.org/abs/2603.08683/" class="text-link" target="_blank">Paper</a></li>
+                            <li class="publication-link"><a href="https://github.com/pnlong/trilobyte-experiments" class="text-link" target="_blank">Experiments</a></li>
+                            <li class="publication-link"><a href="https://github.com/pnlong/trilobyte-lossless-codec" class="text-link" target="_blank">Lossless Codec</a></li>
+                        </ul>
+                    </div>
+                    <div class="publication">
                         <h3 class="publication-title">MuseTok: Symbolic Music Tokenization for Generation and Semantic Understanding</h3>
                         <p class="publication-info">Jingyue Huang, Zachary Novack, <b>Phillip Long</b>, Yupeng Hou, Ke Chen, Taylor Berg-Kirkpatrick, Julian McAuley<br><i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2026</i>, <a href="https://arxiv.org/abs/2510.16273/" class="text-link" target="_blank">https://arxiv.org/abs/2510.16273</a></p>
                         <p class="publication-info publication-summary">Proposed a new tokenization method for symbolic music, which employs a residual vector quantized-variational autoencoder (RQ-VAE) on bar-wise music segments within a Transformer-based encoder-decoder framework, producing music codes that achieve high-fidelity music reconstruction and accurate understanding of music theory. Evaluated the semantic understanding of the framework at the note, bar and song levels by training classifiers on MuseTok's encoded-latents for three music information retrieval tasks: melody extraction, chord detection, and emotion recognition.</p>
